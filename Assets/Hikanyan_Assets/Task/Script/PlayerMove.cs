@@ -38,7 +38,6 @@ namespace Hikanyan_Assets.Task.Script
             if (other.gameObject.tag == "Goal")
             {
                 _isStop = true;
-                _rigidBody.velocity = new Vector3(0, 0, 0);
             }
         }
     }
