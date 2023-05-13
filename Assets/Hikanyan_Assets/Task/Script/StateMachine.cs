@@ -1,6 +1,8 @@
-﻿namespace Hikanyan_Assets.Task.Script
+﻿using UnityEngine;
+
+namespace Hikanyan_Assets.Task.Script
 {
-    public class StateMachine
+    public class StateMachine <T,TEnum>
     {
         
     }
