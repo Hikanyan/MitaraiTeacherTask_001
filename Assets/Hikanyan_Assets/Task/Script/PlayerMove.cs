@@ -7,37 +7,49 @@ namespace Hikanyan_Assets.Task.Script
 {
     public class PlayerMove : MonoBehaviour
     {
-        Rigidbody _rigidBody;
+        //プレイヤー状態定義
+        public enum PLAYER_STATE
+        {
+            RUN,        //走る
+            SHIFT,      //横移動
+            STOP,       //停止
+        }
+        //横移動方向定義
+        public enum SHIFT_DIR
+        {
+            NONE,       //通常
+            LEFT,       //左側
+            RIGHT       //右側
+        }
+        //Playerの直線移動スピード
         [SerializeField]
-        Vector3 force = new Vector3(0.0f, 0.0f, -30.0f);
-        bool _isStop = false;
-
+        float _playerSpeed = 1;
+        //横移動量
+        [SerializeField]
+        float _shiftValue = 1;
+        //現在のエリアラインのインデックス
+        int _currentAreaLineIdx = 0;
+        SHIFT_DIR _shiftDir = SHIFT_DIR.NONE;
         void Awake()
         {
-            _rigidBody = GetComponent<Rigidbody>();
+            
         }
-
         void Update()
         {
-            //TODO
-            if (!_isStop)
-            {
-                if (_rigidBody.velocity.magnitude < 10.0f)
-                {
-                    _rigidBody.AddForce(force);
-                }
-            }
-            else
-            {
-                _rigidBody.velocity = new Vector3(0, 0, 0);
-            }
+            
         }
+
+        void Front()
+        {
+            transform.position += new Vector3(0, 0, _playerSpeed * Time.deltaTime);
+        }
+        
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.tag == "Goal")
             {
-                _isStop = true;
+                
             }
         }
     }
