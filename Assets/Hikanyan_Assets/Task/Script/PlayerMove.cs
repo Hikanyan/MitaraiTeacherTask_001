@@ -65,10 +65,22 @@ namespace Hikanyan_Assets.Task.Script
             switch (_shiftDir)
             {
                 case SHIFT_DIR.LEFT:
-                    transform.position += new Vector3(_shiftValue, 0, 0);
+                    if (_currentAreaLineIdx > 0)
+                    {
+                        _currentAreaLineIdx--;
+                        transform.position = new Vector3(linePoint[_currentAreaLineIdx].position.x,
+                            transform.position.y, transform.position.z);
+                    }
+
                     break;
                 case SHIFT_DIR.RIGHT:
-                    transform.position += new Vector3(-_shiftValue, 0, 0);
+                    if (_currentAreaLineIdx < 2)
+                    {
+                        _currentAreaLineIdx++;
+                        transform.position = new Vector3(linePoint[_currentAreaLineIdx].position.x,
+                            transform.position.y, transform.position.z);
+                    }
+
                     break;
             }
 
