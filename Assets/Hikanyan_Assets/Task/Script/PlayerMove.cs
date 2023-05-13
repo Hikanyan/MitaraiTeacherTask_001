@@ -29,7 +29,7 @@ namespace Hikanyan_Assets.Task.Script
         [SerializeField] float _shiftValue = 1;
 
         //レーンのポイント
-        [SerializeField] List<Transform> linePoint = new List<Transform>();
+        [SerializeField]public List<Transform> linePoint = new List<Transform>();
 
         //現在のエリアラインのインデックス
         int _currentAreaLineIdx = 1;
