@@ -29,29 +29,35 @@ namespace Hikanyan_Assets.Task.Script
         [SerializeField] float _shiftValue = 1;
 
         //レーンのポイント
-        [SerializeField] List<Transform> linePoint = new List<Transform>();
+        [SerializeField]public List<Transform> linePoint = new List<Transform>();
 
         //現在のエリアラインのインデックス
         int _currentAreaLineIdx = 1;
         PLAYER_STATE _playerState = PLAYER_STATE.IDLE;
         SHIFT_DIR _shiftDir = SHIFT_DIR.NONE;
 
+        Rigidbody _rigidbody;
         void Awake()
         {
+            _rigidbody = gameObject.GetComponent<Rigidbody>();
+            _rigidbody.velocity = Vector3.zero;
         }
 
         void Update()
         {
             InputMove();
-            if (_playerState == PLAYER_STATE.RUN)
+           if (_playerState == PLAYER_STATE.RUN)
             {
                 Front();
             }
-
-
             if (_playerState == PLAYER_STATE.SHIFT)
             {
                 Shift();
+            }
+
+            if (_playerState == PLAYER_STATE.IDLE)
+            {
+                _rigidbody.velocity = new Vector3(0, _rigidbody.velocity.y, 0);
             }
         }
 
@@ -71,7 +77,6 @@ namespace Hikanyan_Assets.Task.Script
                         transform.position = new Vector3(linePoint[_currentAreaLineIdx].position.x,
                             transform.position.y, transform.position.z);
                     }
-
                     break;
                 case SHIFT_DIR.RIGHT:
                     if (_currentAreaLineIdx < 2)
@@ -80,7 +85,6 @@ namespace Hikanyan_Assets.Task.Script
                         transform.position = new Vector3(linePoint[_currentAreaLineIdx].position.x,
                             transform.position.y, transform.position.z);
                     }
-
                     break;
             }
 
@@ -122,6 +126,7 @@ namespace Hikanyan_Assets.Task.Script
             if (other.gameObject.tag == "Goal")
             {
                 _playerState = PLAYER_STATE.IDLE;
+                _rigidbody.velocity = Vector3.zero;
             }
         }
     }
