@@ -11,13 +11,13 @@ namespace Hikanyan_Assets.Task.Script
         
         [SerializeField] List<Transform> linePoint = new List<Transform>();
         [SerializeField] private float offset = 1;
-
+        [SerializeField] private int num = 10;
         private void Start()
         {
             var parent = this.transform;
             for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < 10; j++)
+                for (int j = 0; j < num; j++)
                 {
                     Instantiate(_coinPrefab, new Vector3(linePoint[i].position.x, 1, -47+(j * offset)), Quaternion.identity,parent);
                 }
