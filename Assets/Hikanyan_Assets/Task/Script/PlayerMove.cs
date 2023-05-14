@@ -99,6 +99,7 @@ namespace Hikanyan_Assets.Task.Script
                 case PLAYER_STATE.IDLE:
                     if (Input.GetKeyDown(KeyCode.W))
                     {
+                        GameManager.Instance.GameState = GameManager.GAME_STATE.STRAT;
                         _playerState = PLAYER_STATE.RUN;
                     }
 
@@ -125,8 +126,14 @@ namespace Hikanyan_Assets.Task.Script
         {
             if (other.gameObject.tag == "Goal")
             {
+                GameManager.Instance.GameState = GameManager.GAME_STATE.CLEAR;
                 _playerState = PLAYER_STATE.IDLE;
                 _rigidbody.velocity = Vector3.zero;
+            }
+
+            if (other.TryGetComponent<IPoint>(out var point))
+            {
+                point.AddCoinPoint();
             }
         }
     }
