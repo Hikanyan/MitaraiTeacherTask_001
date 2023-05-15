@@ -18,7 +18,7 @@ namespace Hikanyan_Assets.Task.Script
         {
             if (other.tag == "Player")
             {
-                Destroy(this);
+                Destroy(this.gameObject);
             }
         }
     }
