@@ -8,7 +8,6 @@ namespace Hikanyan_Assets.Task.Script
     public class CoinPoint : MonoBehaviour, IPoint
     {
         [SerializeField] private int _point = 10;
-
         public int AddCoinPoint()
         {
             GameManager.Instance.Point += _point;
