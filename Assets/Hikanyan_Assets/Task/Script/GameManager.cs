@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-
+using UnityEngine.UI;
 namespace Hikanyan_Assets.Task.Script
 {
     public class GameManager : AbstractSingleton<GameManager>
@@ -17,7 +17,7 @@ namespace Hikanyan_Assets.Task.Script
         public int Point;
 
         public GAME_STATE GameState = GAME_STATE.NONE;
-        //[SerializeField]
+        [SerializeField] private Text _scoreText;
 
         private void Start()
         {
@@ -30,6 +30,7 @@ namespace Hikanyan_Assets.Task.Script
             {
                 case GAME_STATE.STRAT:
                     Debug.Log(Point);
+                    _scoreText.text = Point.ToString();
                     break;
             }
         }
