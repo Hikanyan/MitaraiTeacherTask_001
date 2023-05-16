@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Hikanyan_Assets.Task.Script
+namespace Hikanyan_Assets.RunGame.Script
 {
     public class CoinGenerator : MonoBehaviour
     {

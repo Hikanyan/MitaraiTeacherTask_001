@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Hikanyan_Assets.Task.Script;
+using Hikanyan_Assets.RunGame.Script;
 
-namespace Hikanyan_Assets.Task.Script
+namespace Hikanyan_Assets.RunGame.Script
 {
     public class CoinPoint : MonoBehaviour, IPoint
     {
