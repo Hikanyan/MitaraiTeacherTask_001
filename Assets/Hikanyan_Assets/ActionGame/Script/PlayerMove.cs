@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using System.Collections; 
 
 namespace Hikanyan_Assets.ActionGame.Script
 {
@@ -7,7 +8,9 @@ namespace Hikanyan_Assets.ActionGame.Script
     {
         [SerializeField] private GameObject _pointer;
         private Transform _transform;
+        [SerializeField] private GameObject _bullet;
 
+        
         private void Start()
         {
             _transform = this.transform;
@@ -18,11 +21,12 @@ namespace Hikanyan_Assets.ActionGame.Script
         private void Update()
         {
             Pointer();
+            StartCoroutine("ShotCoroutine");
         }
 
         void BulletShot()
         {
-            
+            Instantiate(_bullet);
         }
 
         void Pointer()
@@ -31,6 +35,11 @@ namespace Hikanyan_Assets.ActionGame.Script
             mousePosition.z = 10;
             Vector3 target = Camera.main.ScreenToWorldPoint(mousePosition);
             _pointer.transform.position = target;
+        }
+        IEnumerator ShotCoroutine()  
+        {
+            yield return new WaitForSeconds(1);
+            BulletShot();
         }
     }
 }
