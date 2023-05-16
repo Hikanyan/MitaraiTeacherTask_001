@@ -10,7 +10,8 @@ namespace Hikanyan_Assets.ActionGame.Script
         private Transform _transform;
         [SerializeField] private GameObject _bullet;
 
-        
+        private float _timer;
+        private float _count=1;
         private void Start()
         {
             _transform = this.transform;
@@ -21,12 +22,17 @@ namespace Hikanyan_Assets.ActionGame.Script
         private void Update()
         {
             Pointer();
-            StartCoroutine("ShotCoroutine");
+            _timer += Time.deltaTime;
+            if (_timer  >= _count)
+            {
+                BulletShot();
+                _timer = 0;
+            }
         }
 
         void BulletShot()
         {
-            Instantiate(_bullet);
+            Instantiate(_bullet,_transform);
         }
 
         void Pointer()
@@ -35,11 +41,6 @@ namespace Hikanyan_Assets.ActionGame.Script
             mousePosition.z = 10;
             Vector3 target = Camera.main.ScreenToWorldPoint(mousePosition);
             _pointer.transform.position = target;
-        }
-        IEnumerator ShotCoroutine()  
-        {
-            yield return new WaitForSeconds(1);
-            BulletShot();
         }
     }
 }
