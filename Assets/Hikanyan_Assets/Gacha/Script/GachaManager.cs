@@ -6,13 +6,6 @@ namespace Hikanyan.Runner
 {
     public class GachaManager : MonoBehaviour
     {
-        void Start()
-        {
-
-        }
-        void Update()
-        {
-
-        }
+       
     }
 }
