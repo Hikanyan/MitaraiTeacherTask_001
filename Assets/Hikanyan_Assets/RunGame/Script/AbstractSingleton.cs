@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-namespace Hikanyan_Assets.Task.Script
+namespace Hikanyan_Assets.RunGame.Script
 {
     public abstract class AbstractSingleton<T> : MonoBehaviour where T : Component
     {

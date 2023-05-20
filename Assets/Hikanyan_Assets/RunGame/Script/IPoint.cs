@@ -1,4 +1,4 @@
-﻿namespace Hikanyan_Assets.Task.Script
+﻿namespace Hikanyan_Assets.RunGame.Script
 {
     public interface IPoint
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
-namespace Hikanyan_Assets.Task.Script
+namespace Hikanyan_Assets.RunGame.Script
 {
     public class GameManager : AbstractSingleton<GameManager>
     {
