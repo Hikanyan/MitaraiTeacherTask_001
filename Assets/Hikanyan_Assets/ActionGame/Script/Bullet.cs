@@ -51,6 +51,13 @@ namespace Hikanyan_Assets.ActionGame.Script
                 if (CollisionDetector(obj))
                 {
                     Debug.Log("hit");
+                    if (obj.gameObject.tag == "Player")
+                    {
+                        if (obj.TryGetComponent<HealthComponent>(out HealthComponent damage))
+                        {
+                            damage.Damage(AddAttack());
+                        }
+                    }
                     Destroy(gameObject);
                 }
                 else
