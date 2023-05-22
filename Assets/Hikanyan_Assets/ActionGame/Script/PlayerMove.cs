@@ -99,7 +99,8 @@ namespace Hikanyan_Assets.ActionGame.Script
 
         void BulletShot()
         {
-            Instantiate(_bullet, new Vector3(_transform.position.x+ _offset, _transform.position.y, _transform.position.z), Quaternion.identity);
+           var bullet = Instantiate(_bullet, new Vector3(_transform.position.x+ _offset, _transform.position.y, _transform.position.z), Quaternion.identity);
+
         }
 
         void Pointer()
@@ -107,6 +108,10 @@ namespace Hikanyan_Assets.ActionGame.Script
             Vector3 mousePosition = Input.mousePosition;
             mousePosition.z = 10;
             Vector3 target = Camera.main.ScreenToWorldPoint(mousePosition);
+            Vector3 playerPosition = Camera.main.WorldToScreenPoint(transform.position);
+            Vector3 direction = mousePosition - playerPosition;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, angle);
             _pointer.transform.position = target;
         }
     }
