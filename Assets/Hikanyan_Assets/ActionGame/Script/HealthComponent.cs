@@ -2,29 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class HealthComponent : MonoBehaviour
-{
-    [SerializeField] protected float _maxHp;
-    [SerializeField] protected float _life;
-    public float Life => _life;
-
-    public void Awake()
+namespace Hikanyan_Assets.ActionGame.Script {
+    public abstract class HealthComponent : MonoBehaviour
     {
-        _life = _maxHp;
-    }
-    public void Damage(float damegePoint)
-    {
-        _life -= damegePoint;
+        [SerializeField] protected float _maxHp;
+        [SerializeField] protected float _life;
+        public float Life => _life;
 
-        if (_life <= 0)
+        public void Awake()
         {
-            if (this.gameObject.CompareTag("Player"))
+            _life = _maxHp;
+        }
+        public void Damage(float damegePoint)
+        {
+            _life -= damegePoint;
+
+            if (_life <= 0)
             {
-                
-            }
-            else
-            {
-                Destroy(this.gameObject);
+                if (this.gameObject.CompareTag("Player"))
+                {
+                    this.gameObject.GetComponent<PlayerMove>().enabled = false;
+                    this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                }
+                else
+                {
+                    Destroy(this.gameObject);
+                }
             }
         }
     }
