@@ -40,7 +40,10 @@ namespace Hikanyan_Assets.ActionGame.Script
         }
         private void Update()
         {
-            transform.position += new Vector3(_speed * Time.deltaTime, 0, 0);
+            float angle = transform.rotation.eulerAngles.z;
+            Vector3 moveDirection = Quaternion.Euler(0f, 0f, angle) * Vector3.right;
+            transform.position += moveDirection * _speed * Time.deltaTime;
+
 
             if (50 < transform.position.x || transform.position.x < -20)
             {
