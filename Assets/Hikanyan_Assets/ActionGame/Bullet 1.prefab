@@ -108,3 +108,4 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   target: []
+  thistarget: {x: -10, y: 0, z: 0}

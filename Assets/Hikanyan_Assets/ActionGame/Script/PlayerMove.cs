@@ -20,6 +20,7 @@ namespace Hikanyan_Assets.ActionGame.Script
         private float _count = 1;
 
         [SerializeField] float _offset = 2;
+        [SerializeField] Transform _target;
         private void Start()
         {
             _transform = this.transform;
@@ -95,11 +96,13 @@ namespace Hikanyan_Assets.ActionGame.Script
             return h;
         }
 
-
+        float angle;
 
         void BulletShot()
         {
-            Instantiate(_bullet, new Vector3(_transform.position.x+ _offset, _transform.position.y, _transform.position.z), Quaternion.identity);
+            var bullet = Instantiate(_bullet, new Vector3(_target.position.x, _target.position.y, _target.position.z), Quaternion.identity);
+            bullet.transform.rotation = transform.rotation;
+            //bullet.transform.position =_transform.position - _target.position;
         }
 
         void Pointer()
@@ -107,6 +110,10 @@ namespace Hikanyan_Assets.ActionGame.Script
             Vector3 mousePosition = Input.mousePosition;
             mousePosition.z = 10;
             Vector3 target = Camera.main.ScreenToWorldPoint(mousePosition);
+            Vector3 playerPosition = Camera.main.WorldToScreenPoint(transform.position);
+            Vector3 direction = mousePosition - playerPosition;
+            angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, angle);
             _pointer.transform.position = target;
         }
     }
