@@ -18,22 +18,21 @@ namespace Hikanyan_Assets.ActionGame.Script
 
         [SerializeField] List<Transform> target;
 
-        [SerializeField]float _offset;
         void Start()
         {
             _bulletPos = GetComponent<Transform>();
             _playerPos = GameObject.Find("Player").transform;
-            
+
             for (int i = 1; i <= 5; i++)
             {
-                _enemyPos[i-1] = GameObject.Find($"Enemy_{i}").transform;
+                _enemyPos[i - 1] = GameObject.Find($"Enemy_{i}").transform;
             }
             target.Add(_playerPos);
-            foreach(var p in _enemyPos)
+            foreach (var p in _enemyPos)
             {
                 target.Add(p);
             }
-            
+
         }
         public int AddAttack()
         {
@@ -65,25 +64,25 @@ namespace Hikanyan_Assets.ActionGame.Script
         float targetY;
         float bulletX;
         float bulletY;
-        float halfWidth = 0.5f/2;
-        float halfHeight = 0.5f/2;
+        float halfWidth = 0.5f;
+        float halfHeight = 0.5f;
         bool CollisionDetector(Transform target)
         {
             targetX = target.position.x;
             targetY = target.position.y;
-            bulletX = _bulletPos.position.x+_offset;
+            bulletX = _bulletPos.position.x;
             bulletY = _bulletPos.position.y;
-            Debug.DrawLine(new Vector3(bulletX - halfWidth, bulletY - halfHeight), new Vector3(bulletX + halfWidth, bulletY - halfHeight), Color.red);
-            Debug.DrawLine(new Vector3(bulletX + halfWidth, bulletY - halfHeight), new Vector3(bulletX + halfWidth, bulletY + halfHeight), Color.red);
-            Debug.DrawLine(new Vector3(bulletX + halfWidth, bulletY + halfHeight), new Vector3(bulletX - halfWidth, bulletY + halfHeight), Color.red);
-            Debug.DrawLine(new Vector3(bulletX - halfWidth, bulletY + halfHeight), new Vector3(bulletX - halfWidth, bulletY - halfHeight), Color.red);
+            Debug.DrawLine(new Vector3(bulletX - halfWidth, bulletY - halfHeight / 2), new Vector3(bulletX + halfWidth, bulletY - halfHeight / 2), Color.red);
+            Debug.DrawLine(new Vector3(bulletX + halfWidth, bulletY - halfHeight / 2), new Vector3(bulletX + halfWidth, bulletY + halfHeight / 2), Color.red);
+            Debug.DrawLine(new Vector3(bulletX + halfWidth, bulletY + halfHeight / 2), new Vector3(bulletX - halfWidth, bulletY + halfHeight / 2), Color.red);
+            Debug.DrawLine(new Vector3(bulletX - halfWidth, bulletY + halfHeight / 2), new Vector3(bulletX - halfWidth, bulletY - halfHeight / 2), Color.red);
 
             Debug.DrawLine(new Vector3(targetX - halfWidth, targetY - halfHeight), new Vector3(targetX + halfWidth, targetY - halfHeight), Color.red);
             Debug.DrawLine(new Vector3(targetX + halfWidth, targetY - halfHeight), new Vector3(targetX + halfWidth, targetY + halfHeight), Color.red);
             Debug.DrawLine(new Vector3(targetX + halfWidth, targetY + halfHeight), new Vector3(targetX - halfWidth, targetY + halfHeight), Color.red);
             Debug.DrawLine(new Vector3(targetX - halfWidth, targetY + halfHeight), new Vector3(targetX - halfWidth, targetY - halfHeight), Color.red);
             if (targetX < bulletX + halfWidth && targetX + halfWidth > bulletX &&
-                targetY < bulletY + halfHeight && targetY + halfHeight > bulletY)
+                targetY < bulletY + halfHeight / 2 && targetY + halfHeight / 2 > bulletY)
             {
                 return true; // 当たり判定あり
             }
