@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5975651777882313041}
   - component: {fileID: -1685603572624748239}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: Bullet 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackDamage: 10
-  _speed: 10
+  _speed: -10
   _bulletPos: {fileID: 0}
   _playerPos: {fileID: 0}
   _enemyPos:

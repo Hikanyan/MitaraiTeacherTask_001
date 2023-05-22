@@ -18,10 +18,12 @@ namespace Hikanyan_Assets.ActionGame.Script
 
         private float _timer;
         private float _count = 1;
+
+        [SerializeField] float _offset = 2;
         private void Start()
         {
             _transform = this.transform;
-            _pointer = Instantiate(_pointer, new Vector3(this.transform.position.x, this.transform.position.y, 10),
+            _pointer = Instantiate(_pointer, new Vector3(this.transform.position.x+2, this.transform.position.y, 10),
                 Quaternion.identity, _transform);
         }
 
@@ -86,7 +88,7 @@ namespace Hikanyan_Assets.ActionGame.Script
 
         private float CalculateJumpHeight(float time)
         {
-            float g = Mathf.Abs(Physics.gravity.y);
+            float g = Mathf.Abs(-9.8f);
             float v0 = (2f * jumpHeight) / jumpDuration;
             float h = v0 * time - (0.5f * g * time * time);
 
@@ -97,7 +99,7 @@ namespace Hikanyan_Assets.ActionGame.Script
 
         void BulletShot()
         {
-            Instantiate(_bullet, new Vector3(_transform.position.x, _transform.position.y, _transform.position.z), Quaternion.identity);
+            Instantiate(_bullet, new Vector3(_transform.position.x+ _offset, _transform.position.y, _transform.position.z), Quaternion.identity);
         }
 
         void Pointer()
