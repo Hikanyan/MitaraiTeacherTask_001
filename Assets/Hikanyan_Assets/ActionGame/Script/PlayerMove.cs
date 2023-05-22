@@ -1,20 +1,23 @@
 ﻿using System;
 using UnityEngine;
-using System.Collections; 
+using System.Collections;
 
 namespace Hikanyan_Assets.ActionGame.Script
 {
     public class PlayerMove : MonoBehaviour
     {
         [SerializeField] float _moveSpeed = 5.0f;
-        
+
         [SerializeField] private GameObject _pointer;
-        private Transform _transform;
         [SerializeField] private GameObject _bullet;
-        LayerMask groundLayer;
+        private Transform _transform;
+        float jumpHeight = 5f;
+        float jumpDuration = 1f;
+        private float jumpStartTime;
+        private bool isJumping = false;
 
         private float _timer;
-        private float _count=1;
+        private float _count = 1;
         private void Start()
         {
             _transform = this.transform;
@@ -27,7 +30,7 @@ namespace Hikanyan_Assets.ActionGame.Script
             Move();
             Pointer();
             _timer += Time.deltaTime;
-            if (_timer  >= _count)
+            if (_timer >= _count)
             {
                 BulletShot();
                 _timer = 0;
@@ -36,19 +39,65 @@ namespace Hikanyan_Assets.ActionGame.Script
 
         void Move()
         {
-            var posY = _transform.position.y;
-            if (Input.GetKeyDown(KeyCode.Space))
+            var posY = transform.position.y;
+            if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
             {
-                posY += _moveSpeed * Time.deltaTime;
+                StartJump();
             }
-            transform.position += new Vector3(Input.GetAxisRaw("Horizontal"),posY).normalized * (_moveSpeed * Time.deltaTime);
+            if (isJumping)
+            {
+                PerformJump();
+            }
+            else
+            {
+                if (transform.position.y > 0.0f)
+                {
+                    posY -= 9.8f;
+                }
+                else
+                {
+                    posY = 0;
+                }
+            }
+            transform.position += new Vector3(Input.GetAxisRaw("Horizontal"), posY).normalized * (_moveSpeed * Time.deltaTime);
+        }
+        private void StartJump()
+        {
+            isJumping = true;
+            jumpStartTime = Time.time;
         }
 
-        
+        private void PerformJump()
+        {
+            float timeSinceJump = Time.time - jumpStartTime;
+            if (timeSinceJump >= jumpDuration)
+            {
+                isJumping = false;
+            }
+            else
+            {
+                float jumpHeightValue = CalculateJumpHeight(timeSinceJump);
+
+                Vector3 newPosition = transform.position;
+                newPosition.y = jumpHeightValue;
+                transform.position = newPosition;
+            }
+        }
+
+        private float CalculateJumpHeight(float time)
+        {
+            float g = Mathf.Abs(Physics.gravity.y);
+            float v0 = (2f * jumpHeight) / jumpDuration;
+            float h = v0 * time - (0.5f * g * time * time);
+
+            return h;
+        }
+
+
 
         void BulletShot()
         {
-            Instantiate(_bullet,new Vector3(_transform.position.x,_transform.position.y,_transform.position.z),Quaternion.identity);
+            Instantiate(_bullet, new Vector3(_transform.position.x, _transform.position.y, _transform.position.z), Quaternion.identity);
         }
 
         void Pointer()
