@@ -45,7 +45,7 @@ namespace Hikanyan_Assets.ActionGame.Script
         }
 
         void Gravity()
-        {3
+        {
             var posY = _transform.position.y;
             if (transform.position.y > 0)
             {
