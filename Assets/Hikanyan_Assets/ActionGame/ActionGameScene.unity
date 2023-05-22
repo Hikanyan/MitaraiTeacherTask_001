@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 394659850}
   - component: {fileID: 394659849}
   - component: {fileID: 394659851}
+  - component: {fileID: 394659852}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -220,7 +221,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18c4df8558104f6c974acc72992dbf14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moveSpeed: 5
   _pointer: {fileID: 1700481358901675226, guid: f0a1a268224864a458acd617091c0831, type: 3}
+  _bullet: {fileID: 0}
+--- !u!114 &394659852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394659848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18c4df8558104f6c974acc72992dbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveSpeed: 5
+  _pointer: {fileID: 1700481358901675226, guid: f0a1a268224864a458acd617091c0831, type: 3}
+  _bullet: {fileID: 654789047943930551, guid: 43e6d6b815c9d2842ae89231c10d0c16, type: 3}
 --- !u!1 &526605366
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,6 +333,7 @@ GameObject:
   m_Component:
   - component: {fileID: 546694028}
   - component: {fileID: 546694027}
+  - component: {fileID: 546694029}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -389,6 +408,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &546694029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546694026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c5a258ff77146d3a9706ed1fdc51cae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bullet: {fileID: 654789047943930551, guid: 43e6d6b815c9d2842ae89231c10d0c16, type: 3}
 --- !u!1 &1227733419
 GameObject:
   m_ObjectHideFlags: 0

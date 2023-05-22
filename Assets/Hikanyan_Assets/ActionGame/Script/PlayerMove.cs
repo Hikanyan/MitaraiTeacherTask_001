@@ -9,9 +9,9 @@ namespace Hikanyan_Assets.ActionGame.Script
         [SerializeField] float _moveSpeed = 5.0f;
         
         [SerializeField] private GameObject _pointer;
-        private Transform _transform;
         [SerializeField] private GameObject _bullet;
-        LayerMask groundLayer;
+        private Transform _transform;
+        private float _gravity = -9.8f;
 
         private float _timer;
         private float _count=1;
@@ -42,6 +42,23 @@ namespace Hikanyan_Assets.ActionGame.Script
                 posY += _moveSpeed * Time.deltaTime;
             }
             transform.position += new Vector3(Input.GetAxisRaw("Horizontal"),posY).normalized * (_moveSpeed * Time.deltaTime);
+        }
+
+        void Gravity()
+        {3
+            var posY = _transform.position.y;
+            if (transform.position.y > 0)
+            {
+                posY += _gravity* Time.deltaTime;
+                transform.position += new Vector3(transform.position.x,posY );
+                
+                Gravity();
+            }
+            else
+            {
+                posY = 0;
+                transform.position += new Vector3(transform.position.x,posY );
+            }
         }
 
         
