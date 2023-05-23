@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 255478500}
   - component: {fileID: 255478499}
   - component: {fileID: 255478502}
+  - component: {fileID: 255478503}
   m_Layer: 0
   m_Name: Enemy_3
   m_TagString: Enemy
@@ -156,6 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bullet: {fileID: 654789047943930551, guid: 0e7475c2813cabb428457115573a3a30, type: 3}
   _offset: 2
+  checkCollision: {fileID: 1927862992}
 --- !u!212 &255478500
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -240,6 +242,18 @@ MonoBehaviour:
   m_Target: 1
   healthComponent: {fileID: 0}
   healthText: {fileID: 0}
+--- !u!114 &255478503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255478498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6d1a97022e86dd42a0ba934ef3ef6a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &365576786
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,6 +266,7 @@ GameObject:
   - component: {fileID: 365576788}
   - component: {fileID: 365576787}
   - component: {fileID: 365576790}
+  - component: {fileID: 365576791}
   m_Layer: 0
   m_Name: Enemy_2
   m_TagString: Enemy
@@ -273,6 +288,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bullet: {fileID: 654789047943930551, guid: 0e7475c2813cabb428457115573a3a30, type: 3}
   _offset: 2
+  checkCollision: {fileID: 1927862992}
 --- !u!212 &365576788
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -357,6 +373,18 @@ MonoBehaviour:
   m_Target: 1
   healthComponent: {fileID: 0}
   healthText: {fileID: 0}
+--- !u!114 &365576791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365576786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6d1a97022e86dd42a0ba934ef3ef6a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &394659848
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,6 +397,7 @@ GameObject:
   - component: {fileID: 394659849}
   - component: {fileID: 394659852}
   - component: {fileID: 394659853}
+  - component: {fileID: 394659854}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -478,6 +507,18 @@ MonoBehaviour:
   m_Target: 0
   healthComponent: {fileID: 0}
   healthText: {fileID: 1687392668}
+--- !u!114 &394659854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394659848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6d1a97022e86dd42a0ba934ef3ef6a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &526605366
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,6 +629,7 @@ GameObject:
   - component: {fileID: 546694027}
   - component: {fileID: 546694029}
   - component: {fileID: 546694030}
+  - component: {fileID: 546694031}
   m_Layer: 0
   m_Name: Enemy_5
   m_TagString: Enemy
@@ -676,6 +718,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bullet: {fileID: 654789047943930551, guid: 0e7475c2813cabb428457115573a3a30, type: 3}
   _offset: 2
+  checkCollision: {fileID: 1927862992}
 --- !u!114 &546694030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -693,6 +736,18 @@ MonoBehaviour:
   m_Target: 1
   healthComponent: {fileID: 0}
   healthText: {fileID: 0}
+--- !u!114 &546694031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546694026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6d1a97022e86dd42a0ba934ef3ef6a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &723237438
 GameObject:
   m_ObjectHideFlags: 0
@@ -773,6 +828,7 @@ GameObject:
   - component: {fileID: 1107665847}
   - component: {fileID: 1107665846}
   - component: {fileID: 1107665849}
+  - component: {fileID: 1107665850}
   m_Layer: 0
   m_Name: Enemy_1
   m_TagString: Enemy
@@ -794,6 +850,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bullet: {fileID: 654789047943930551, guid: 0e7475c2813cabb428457115573a3a30, type: 3}
   _offset: 2
+  checkCollision: {fileID: 1927862992}
 --- !u!212 &1107665847
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -878,6 +935,18 @@ MonoBehaviour:
   m_Target: 1
   healthComponent: {fileID: 0}
   healthText: {fileID: 0}
+--- !u!114 &1107665850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107665845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6d1a97022e86dd42a0ba934ef3ef6a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1173187484
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,6 +959,7 @@ GameObject:
   - component: {fileID: 1173187486}
   - component: {fileID: 1173187485}
   - component: {fileID: 1173187488}
+  - component: {fileID: 1173187489}
   m_Layer: 0
   m_Name: Enemy_4
   m_TagString: Enemy
@@ -911,6 +981,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bullet: {fileID: 654789047943930551, guid: 0e7475c2813cabb428457115573a3a30, type: 3}
   _offset: 2
+  checkCollision: {fileID: 1927862992}
 --- !u!212 &1173187486
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -995,6 +1066,18 @@ MonoBehaviour:
   m_Target: 1
   healthComponent: {fileID: 0}
   healthText: {fileID: 0}
+--- !u!114 &1173187489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173187484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6d1a97022e86dd42a0ba934ef3ef6a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1227733419
 GameObject:
   m_ObjectHideFlags: 0
@@ -2048,6 +2131,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 394659850}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1927862991
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1927862993}
+  - component: {fileID: 1927862992}
+  m_Layer: 0
+  m_Name: CheckCollision
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1927862992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927862991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6d1a97022e86dd42a0ba934ef3ef6a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1927862993
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927862991}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2054273100
 GameObject:
