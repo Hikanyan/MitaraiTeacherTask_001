@@ -65,7 +65,7 @@ namespace Hikanyan_Assets.ActionGame.Script
                 }
                 else
                 {
-                    Debug.Log("no");
+                    //Debug.Log("no");
                 }
             }
 
