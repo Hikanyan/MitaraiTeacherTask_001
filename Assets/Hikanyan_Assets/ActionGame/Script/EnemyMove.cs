@@ -22,6 +22,7 @@ namespace Hikanyan_Assets.ActionGame.Script
         }
         private void Update()
         {
+            if(_playerTarget == null)return;
             Rect rect = new Rect(
                     _playerTarget.transform.position.x - _playerTarget.transform.localScale.x / 2f,
                     _playerTarget.transform.position.y - _playerTarget.transform.localScale.y / 2f,
