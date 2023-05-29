@@ -11,9 +11,11 @@ namespace Hikanyan_Assets.ActionGame.Script
         [SerializeField] private GameObject _pointer;
         [SerializeField] private GameObject _bullet;
         private Transform _transform;
-        float jumpHeight = 5f;
-        float jumpDuration = 1f;
-        private float jumpStartTime;
+        float _jumpHeight = 5f;
+        private float _nowJump;
+        private float _jumpStartTime;
+        private float _gravity = 9.8f;
+        
         private bool isJumping = false;
 
         private float _timer;
@@ -42,59 +44,28 @@ namespace Hikanyan_Assets.ActionGame.Script
 
         void Move()
         {
-            var posY = transform.position.y;
+            float posX = transform.position.x + Input.GetAxisRaw("Horizontal")* _moveSpeed * Time.deltaTime;
+            float posY = transform.position.y;
             if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
             {
-                StartJump();
+                isJumping = true;
             }
             if (isJumping)
             {
-                PerformJump();
-            }
-            else
-            {
-                if (transform.position.y > 0.0f)
-                {
-                    posY -= 9.8f;
-                }
-                else
+                posY += _nowJump * Time.deltaTime;
+                _nowJump -= _gravity * Time.deltaTime;
+
+                if (transform.position.y < 0)
                 {
                     posY = 0;
+                    _nowJump = _jumpHeight;
+                    isJumping = false;
                 }
             }
-            transform.position += new Vector3(Input.GetAxisRaw("Horizontal"), posY).normalized * (_moveSpeed * Time.deltaTime);
-        }
-        private void StartJump()
-        {
-            isJumping = true;
-            jumpStartTime = Time.time;
+            transform.position = new Vector3(posX, posY, 0);
         }
 
-        private void PerformJump()
-        {
-            float timeSinceJump = Time.time - jumpStartTime;
-            if (timeSinceJump >= jumpDuration)
-            {
-                isJumping = false;
-            }
-            else
-            {
-                float jumpHeightValue = CalculateJumpHeight(timeSinceJump);
-
-                Vector3 newPosition = transform.position;
-                newPosition.y = jumpHeightValue;
-                transform.position = newPosition;
-            }
-        }
-
-        private float CalculateJumpHeight(float time)
-        {
-            float g = Mathf.Abs(-9.8f);
-            float v0 = (2f * jumpHeight) / jumpDuration;
-            float h = v0 * time - (0.5f * g * time * time);
-
-            return h;
-        }
+        
 
         float angle;
 
