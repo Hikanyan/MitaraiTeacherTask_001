@@ -15,6 +15,7 @@ namespace Hikanyan_Assets.ActionGame.Script
 
         private void Update()
         {
+            if(_player == null)return;
             transform.position = _player.transform.position + offset;
         }
     }

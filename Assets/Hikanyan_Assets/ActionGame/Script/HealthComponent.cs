@@ -19,19 +19,8 @@ namespace Hikanyan_Assets.ActionGame.Script {
 
             if (_life <= 0)
             {
-                if (this.gameObject.CompareTag("Player"))
-                {
-                    this.gameObject.GetComponent<PlayerMove>().enabled = false;
-                    this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-                }
-                else if (this.gameObject.CompareTag("Enemy"))
-                {
-                    this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-                }
-                else
-                {
-                    Destroy(this.gameObject);
-                }
+                _life = 0;
+                Destroy(this.gameObject);
             }
         }
     }
