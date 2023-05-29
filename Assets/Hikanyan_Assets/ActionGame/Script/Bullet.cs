@@ -117,12 +117,21 @@ namespace Hikanyan_Assets.ActionGame.Script
         {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             GameObject[] targets = GameObject.FindGameObjectsWithTag("Enemy");
+            GameObject laser =GameObject.FindGameObjectWithTag("Laser");
 
             if (player == null) return;
-            GameObject[] allTargets = new GameObject[targets.Length + 1];
+            int allTargetsLength = targets.Length;
+            if (laser != null)
+            {
+                allTargetsLength++;
+            }
+            GameObject[] allTargets = new GameObject[allTargetsLength + 1];
             targets.CopyTo(allTargets, 0);
             allTargets[allTargets.Length - 1] = player;
-            
+            if (laser != null)
+            {
+                allTargets[allTargets.Length - 2] = laser;
+            }
             for (int i = 0; i < allTargets.Length; i++)
             {
                 Vector3 targetPosition = allTargets[i].transform.position;
