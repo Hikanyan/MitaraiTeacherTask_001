@@ -36,7 +36,7 @@ namespace Hikanyan_Assets.ActionGame.Script
             Move();
             Pointer();
             _timer += Time.deltaTime;
-            if (_timer >= _count)
+            if (_timer >= _count && Input.GetKeyDown(KeyCode.F))
             {
                 BulletShot();
                 _timer = 0;
