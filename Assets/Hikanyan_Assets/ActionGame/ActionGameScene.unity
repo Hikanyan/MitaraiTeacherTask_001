@@ -617,6 +617,7 @@ MonoBehaviour:
   - {fileID: 260826982}
   - {fileID: 808264856}
   spawnInterval: 1
+  spawnDistanceThreshold: 10
 --- !u!4 &1180693784
 Transform:
   m_ObjectHideFlags: 0

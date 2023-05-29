@@ -10,7 +10,7 @@ namespace Hikanyan_Assets.ActionGame.Script
         public GameObject enemyPrefab; // 敵のプレハブ
         public List<GameObject> spawnPoints; // 敵の出現位置のリスト
         public float spawnInterval = 3f; // スポーンの間隔（秒）
-
+        public float spawnDistanceThreshold = 10f; // スポーンする距離
         private async void Start()
         {
             // スポーンを開始するためのAsyncSubjectを作成
@@ -41,7 +41,7 @@ namespace Hikanyan_Assets.ActionGame.Script
 
         private bool IsEnemyPresent()
         {
-            // 敵の存在をチェックするロジックを実装
+            // 敵の存在をチェックする
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
             return enemies.Length > 0;
         }
@@ -51,7 +51,7 @@ namespace Hikanyan_Assets.ActionGame.Script
             // ランダムな出現位置を選択
             GameObject spawnPoint = GetRandomSpawnPoint();
 
-            if (spawnPoint != null)
+            if (spawnPoint != null && IsPlayerInRange(spawnPoint.transform.position))
             {
                 // 敵を生成して出現させる
                 Instantiate(enemyPrefab, spawnPoint.transform.position, Quaternion.identity);
@@ -69,6 +69,19 @@ namespace Hikanyan_Assets.ActionGame.Script
 
             int randomIndex = Random.Range(0, spawnPoints.Count);
             return spawnPoints[randomIndex];
+        }
+
+        bool IsPlayerInRange(Vector3 spawnPoint)
+        {
+            // プレイヤーがスポーン地点に一定距離近づいているかをチェック
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                float distance = Vector3.Distance(player.transform.position, spawnPoint);
+                //Debug.Log(distance);
+                return distance <= spawnDistanceThreshold;
+            }
+            return false;
         }
     }
 }
