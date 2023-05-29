@@ -11,11 +11,11 @@ namespace Hikanyan_Assets.ActionGame.Script
         [SerializeField] private GameObject _pointer;
         [SerializeField] private GameObject _bullet;
         private Transform _transform;
-        float _jumpHeight = 5f;
+        [SerializeField] float _jumpHeight = 5f;
         private float _nowJump;
         private float _jumpStartTime;
         private float _gravity = 9.8f;
-        
+
         private bool isJumping = false;
 
         private float _timer;
@@ -23,10 +23,11 @@ namespace Hikanyan_Assets.ActionGame.Script
 
         [SerializeField] float _offset = 2;
         [SerializeField] Transform _target;
+
         private void Start()
         {
             _transform = this.transform;
-            _pointer = Instantiate(_pointer, new Vector3(this.transform.position.x+2, this.transform.position.y, 10),
+            _pointer = Instantiate(_pointer, new Vector3(this.transform.position.x + 2, this.transform.position.y, 10),
                 Quaternion.identity, _transform);
         }
 
@@ -44,12 +45,13 @@ namespace Hikanyan_Assets.ActionGame.Script
 
         void Move()
         {
-            float posX = transform.position.x + Input.GetAxisRaw("Horizontal")* _moveSpeed * Time.deltaTime;
+            float posX = transform.position.x + Input.GetAxisRaw("Horizontal") * _moveSpeed * Time.deltaTime;
             float posY = transform.position.y;
             if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
             {
                 isJumping = true;
             }
+
             if (isJumping)
             {
                 posY += _nowJump * Time.deltaTime;
@@ -62,16 +64,17 @@ namespace Hikanyan_Assets.ActionGame.Script
                     isJumping = false;
                 }
             }
+
             transform.position = new Vector3(posX, posY, 0);
         }
 
-        
 
         float angle;
 
         void BulletShot()
         {
-            var bullet = Instantiate(_bullet, new Vector3(_target.position.x, _target.position.y, _target.position.z), Quaternion.identity);
+            var bullet = Instantiate(_bullet, new Vector3(_target.position.x, _target.position.y, _target.position.z),
+                Quaternion.identity);
             bullet.transform.rotation = transform.rotation;
             //bullet.transform.position =_transform.position - _target.position;
         }
